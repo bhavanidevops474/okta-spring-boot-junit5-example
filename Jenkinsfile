@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    tools {
+        maven 'maven-3.6.3'
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -9,18 +11,11 @@ pipeline {
             }
             }
         }
-        stage('Test') {
+        stage('Build'){
             steps {
                 script {
-                "mvn test -Dtest=BirthdayInfoControllerIT" 
-            }
-            }
-        }
-        stage('Publish test results') {
-            steps {
-                script {
-                junit "**/target/surefire-reports/*.xml"
-            }
+                    "mvn clean package"
+                }
             }
         }
         
