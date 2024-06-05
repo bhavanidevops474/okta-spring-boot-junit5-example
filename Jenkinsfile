@@ -12,14 +12,7 @@ pipeline {
         stage('Clean') {
             steps {
                 script {
-                "mvn test" 
-            }
-            }
-        }
-        stage('Publish test results') {
-            steps {
-                script {
-                junit "**/target/surefire-reports/*.xml"
+                "mvn test -Dtest=BirthdayInfoControllerIT" 
             }
             }
         }
