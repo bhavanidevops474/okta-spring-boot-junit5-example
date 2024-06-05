@@ -18,6 +18,13 @@ pipeline {
                 }
             }
         }
-        
+        stage('Test') {
+            steps {
+                script {
+                "mvn test -Dtest=BirthdayInfoControllerIT" 
+            }
+            }
+        }
     }
 }
+         
