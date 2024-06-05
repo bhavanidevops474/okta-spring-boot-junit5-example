@@ -15,7 +15,8 @@ pipeline {
                 "mvn test -Dtest=BirthdayInfoControllerIT" 
             }
             }
-        }stage('Publish test results') {
+        }
+        stage('Publish test results') {
             steps {
                 script {
                 junit "**/target/surefire-reports/*.xml"
