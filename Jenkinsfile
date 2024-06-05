@@ -13,16 +13,15 @@ pipeline {
         }
         stage('Build'){
             steps {
-                script {
-                    "mvn clean package"
-                }
+                sh 'mvn -B -DskipTests clean package'
+                
             }
         }
         stage('Test') {
             steps {
-                script {
-                "mvn test -Dtest=BirthdayInfoControllerIT" 
-            }
+                
+                sh 'mvn test -Dtest=BirthdayInfoControllerIT' 
+            
             }
         }
     }
