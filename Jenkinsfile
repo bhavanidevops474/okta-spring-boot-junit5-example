@@ -9,12 +9,19 @@ pipeline {
             }
             }
         }
-        stage('Clean') {
+        stage('Test') {
             steps {
                 script {
                 "mvn test -Dtest=BirthdayInfoControllerIT" 
             }
             }
+        }stage('Publish test results') {
+            steps {
+                script {
+                junit "**/target/surefire-reports/*.xml"
+            }
+            }
         }
+        
     }
 }
