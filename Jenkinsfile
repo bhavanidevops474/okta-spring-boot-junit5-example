@@ -24,11 +24,13 @@ pipeline {
             
             }
         }
-        post {
-        always {
-            junit 'build/reports/**/*.xml'
+
+        stage('Publish test results') {
+            steps {
+                script {
+                junit 'build/reports/**/*.xml'
+            }
+            }
         }
     }
-    }
 }
-         
