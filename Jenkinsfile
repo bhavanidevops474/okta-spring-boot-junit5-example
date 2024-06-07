@@ -26,11 +26,15 @@ pipeline {
         }
 
          post {
+             stage {
+                 steps {
         always {
             archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
             junit 'build/reports/**/*.xml'
         }
     }
+             }
+         }
 
     }
 }
