@@ -24,13 +24,11 @@ pipeline {
             
             }
         }
-
-        stage('Publish test results') {
-            steps {
-                script {
-                junit '**/target/surefire-reports/testng-results.xml'
-            }
-            }
+        post {
+        always {
+            junit 'build/reports/**/*.xml'
         }
+    }
+
     }
 }
