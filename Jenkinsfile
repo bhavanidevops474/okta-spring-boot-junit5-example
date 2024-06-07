@@ -21,7 +21,8 @@ pipeline {
             steps {
                 
                 sh 'mvn clean test' 
-                junit 'build/reports/**/*.xml'
+                sh 'make check || true' 
+                junit '**/target/*.xml'
             }
         }
 
