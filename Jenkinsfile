@@ -20,7 +20,7 @@ pipeline {
         stage('Test') {
             steps {
                 
-                sh 'mvn test -Dtest=BirthdayInfoControllerIT' 
+                sh 'mvn test' 
             
             }
         }
@@ -28,7 +28,7 @@ pipeline {
         stage('Publish test results') {
             steps {
                 script {
-                junit 'build/reports/**/*.xml'
+                junit '**/target/surefire-reports/testng-results.xml'
             }
             }
         }
