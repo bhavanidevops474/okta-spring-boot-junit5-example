@@ -21,21 +21,9 @@ pipeline {
             steps {
                 
                 sh 'mvn clean test' 
-            
+                junit 'build/reports/**/*.xml'
             }
         }
-
-         
-             stage {
-                 steps {
-                     post {
-                       always {
-                            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-                              junit 'build/reports/**/*.xml'
-        }
-    }
-             }
-         }
 
     }
 }
