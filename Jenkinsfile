@@ -22,6 +22,7 @@ pipeline {
                 
                 sh 'mvn clean test' 
                 sh 'make check || true' 
+                archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
                 junit '**/target/*.xml'
             }
         }
